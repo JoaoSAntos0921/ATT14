@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- REACT LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Campo de Texto Controlado</title>
+</head>
+
+<body>
+  <div id="raiz">Seu APP React vai substituir essa div</div>
+
+  <script type="text/babel">
+    // Importando useState de React
+    const { useState } = React;
+
+    // Componente InputTexto controlado
+    function InputTexto() {
+      const [textoDigitado, setTextoDigitado] = useState("");
+
+      return (
+        <div>
+          <h2>Campo de Texto Controlado</h2>
+          <input
+            type="text"
+            value={textoDigitado}
+            onChange={(event) => setTextoDigitado(event.target.value)}
+          />
+          <p>Você digitou: {textoDigitado}</p>
+        </div>
+      );
+    }
+
+    // Componente principal App
+    function App() {
+      return (
+        <div>
+          <h1>Meu App React + JSX</h1>
+          <InputTexto />
+        </div>
+      );
+    }
+
+    // Renderização do App
+    const elementoDoApp = document.getElementById("raiz");
+    const aplicacao = ReactDOM.createRoot(elementoDoApp);
+    aplicacao.render(<App />);
+  </script>
+</body>
+
+</html>

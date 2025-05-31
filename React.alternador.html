@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- React Libraries -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Alternador de Conteúdo</title>
+</head>
+
+<body>
+  <div id="raiz">Seu APP React vai substituir essa div</div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Alternador() {
+      const [estaVisivel, setEstaVisivel] = useState(false);
+
+      function handleToggle() {
+        setEstaVisivel(!estaVisivel);
+      }
+
+      return (
+        <div>
+          <h2>Alternador de Conteúdo</h2>
+          <button onClick={handleToggle}>Mostrar/Esconder</button>
+          {estaVisivel && <p>Aqui e o gota!</p>}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <h1>Meu App React + JSX</h1>
+          <Alternador />
+        </div>
+      );
+    }
+
+    const elementoDoApp = document.getElementById("raiz");
+    const aplicacao = ReactDOM.createRoot(elementoDoApp);
+    aplicacao.render(<App />);
+  </script>
+</body>
+
+</html>
